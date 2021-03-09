@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# 일정 관리 웹 애플리케이션
+* 모두의 주차장 개발을 하면서 최적화의 중요성을 느낌
+* ListItem의 갯수가 늘어날 경우 리스트를 한번에 가져오면 속도가 느려짐
+* 최적화를 통해 보여지지 않는 부분들은 렌더링을 하지 않는것이 목표
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## useMemo
+* TodoListItem에서 props가 바뀌지 않을 경우 리렌더링을 하지 않음
 
-## Available Scripts
+## useReducer
+* useState로 상태를 관리하는 것이 아닌 useReducer를 통하여 상태를 관리
+ - 다양한 상태(insert, remove, toggle)를 관리하기 위해 state가 아닌 reducer를 사용
+ - 다수의 하윗값을 포함하는 복잡한 정적 로직을 만드는 경우나 다음 state가 이전 state에 의존적인 경우에 보통 useState보다 useReducer를 선호
+```
+const [state, dispatch] = useReducer(reducer, initialArg, init);
 
-In the project directory, you can run:
+세번째 parameter : 초기 state를 조금 지연해서 생성하기 위해 init 함수를 세 번째 인자로 전달, 맨처음 렌더링 될때만 함수 호출
+```
+* React는 dispatch 함수의 동일성이 안정적이고 리렌더링 시에도 변경되지 않으리라는 것을 보장
+    - useEffect나 useCallback 의존성 목록에 이 함수를 포함하지 않아도 괜찮은 이유
 
-### `yarn start`
+* 초기화
+    - React에서는 Reducer의 인자로써 state = initialState와 같은 초기값을 나타내는, Redux에서는 보편화된 관습을 사용하지 않음
+    - 만약 초기값을 나타내는 것이 정말 필요하다면 useReducer(reducer, undefined, reducer)를 호출하는 방법으로 Redux를 모방할 수는 있지만 권장하진 않음
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[참고] : https://ko.reactjs.org/docs/hooks-reference.html#usereducer

@@ -21,7 +21,8 @@
 ```
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 
-세번째 parameter : 초기 state를 조금 지연해서 생성하기 위해 init 함수를 세 번째 인자로 전달, 맨처음 렌더링 될때만 함수 호출
+세번째 parameter : 초기 state를 조금 지연해서 생성하기 위해 init 함수를 세 번째 인자로 전달
+                 맨처음 렌더링 될때만 함수 호출
 ```
 * React는 dispatch 함수의 동일성이 안정적이고 리렌더링 시에도 변경되지 않으리라는 것을 보장
     - useEffect나 useCallback 의존성 목록에 이 함수를 포함하지 않아도 괜찮은 이유
@@ -34,7 +35,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 |장점|단점|
 |:---:|:---:|
-|상태를 업테이트하는 로직을 모아서 컴포넌트 바깥에 둘 수있음|기존 코드르 많이 고려야 함|
+|상태를 업테이트하는 로직을 모아서 컴포넌트 바깥에 둘 수있음|기존 코드르 많이 고쳐야 함|
 
 [참고] : https://ko.reactjs.org/docs/hooks-reference.html#usereducer
 
@@ -55,4 +56,5 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 [참고]
 windowing : https://velog.io/@kimjh96/react-virtualized-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94
+
 react-window vs react-virtualized : https://praekiko.medium.com/what-is-windowing-also-i-have-heard-about-react-window-and-react-virtualized-c29dc843f4e0

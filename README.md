@@ -55,6 +55,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
     - 사전작업 : 각 항목의 실제 크기를 px단위로 알아내는 것
 
 [참고]
+
 windowing : https://velog.io/@kimjh96/react-virtualized-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94
 
 react-window vs react-virtualized : https://praekiko.medium.com/what-is-windowing-also-i-have-heard-about-react-window-and-react-virtualized-c29dc843f4e0

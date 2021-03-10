@@ -31,6 +31,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
     - 만약 초기값을 나타내는 것이 정말 필요하다면 useReducer(reducer, undefined, reducer)를 호출하는 방법으로 Redux를 모방할 수는 있지만 권장하진 않음
 
 * 장단점
+
 |장점|단점|
 |:---:|:---:|
 |상태를 업테이트하는 로직을 모아서 컴포넌트 바깥에 둘 수있음|기존 코드르 많이 고려야 함|

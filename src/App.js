@@ -6,25 +6,25 @@ import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 /* Components */
 
-function Init() {
-  const list = [];
+function createBulkTodos() {
+  const array = [];
   for (let i = 0; i < 2500; i++) {
-    list.push({
+    array.push({
       id: i,
       text: `할 일${i}`,
       checked: false,
     });
   };
-  return list;
+  return array;
 }
 
-function reducer(todosList, action) {
+function todoReducer(todosList, action) {
   switch (action.type) {
-    case 'insert':
+    case 'INSERT':
       return todosList.concat(action.newTodo);
-    case 'remove':
+    case 'REMOVE':
       return todosList.filter(todo => todo.id !== action.id);
-    case 'toggle':
+    case 'TOGGLE':
       return todosList.map((todo) => todo.id === action.id ? { ...todo, checked: !todo.checked } : todo);
     default:
       return todosList;
@@ -33,7 +33,7 @@ function reducer(todosList, action) {
 const App = () => {
 
   // 다양한 상태(insert, remove, toggle)를 관리하기 위해 state가 아닌 reducer를 사용
-  const [todosList, dispatch] = useReducer(reducer, undefined, Init);
+  const [todosList, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
   const idxRef = useRef(2500); // 새로 추가하기 위한 id
 
   const handleClickInsert = useCallback((text) => {
@@ -42,16 +42,16 @@ const App = () => {
       text: text,
       checked: false,
     };
-    dispatch({ type: 'insert', newTodo });
+    dispatch({ type: 'INSERT', newTodo });
     idxRef.current += 1;
   }, []);
 
   const handleClickRemove = useCallback((id) => {
-    dispatch({ type: 'remove', id });
+    dispatch({ type: 'REMOVE', id });
   }, []);
 
   const handleClickToggle = useCallback((id) => {
-    dispatch({ type: 'toggle', id })
+    dispatch({ type: 'TOGGLE', id })
   }, []);
 
   return (

@@ -35,7 +35,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 |장점|단점|
 |:---:|:---:|
-|상태를 업테이트하는 로직을 모아서 컴포넌트 바깥에 둘 수있음|기존 코드르 많이 고쳐야 함|
+|상태를 업테이트하는 로직을 모아서 컴포넌트 바깥에 둘 수있음|기존 코드를 많이 고쳐야 함|
 
 [참고] : https://ko.reactjs.org/docs/hooks-reference.html#usereducer
 

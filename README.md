@@ -1,4 +1,4 @@
-[URL](http://dkdlel.github.io/Todos/)
+* [URL](http://dkdlel.github.io/Todos/)
 
 # 일정 관리 웹 애플리케이션
 * 모두의 주차장 개발을 하면서 최적화의 중요성을 느낌
